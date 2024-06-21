@@ -99,7 +99,7 @@ class JPG_Page extends StatelessWidget{
         Text("这些照片拥有完整的内容，以及更高的压缩比"),
         Text("这带来了更小的内存占用"),
         Text("如果你只想浏览照片，建议下载这个文件"),
-        Text("\n访问密码:k2vl(点击前往时自动复制)\n", style: TextStyle(fontSize: 10),),
+        Text("\n访问密码:k2vl\n", style: TextStyle(fontSize: 10),),
         Flex(
           direction: Axis.horizontal,
           children: <Widget>[
@@ -136,7 +136,7 @@ class JPG_RAW_Page extends StatelessWidget{
         Text("这些照片拥有完整的内容，以及更完整的数据"),
         Text("这带来了更大的内存占用，同时有利于复杂照片编辑"),
         Text("如果你想进行较专业的照片编辑，建议下载这个文件"),
-        Text("\n访问密码:ywk1(点击前往时自动复制)\n", style: TextStyle(fontSize: 10),),
+        Text("\n访问密码:ywk1\n", style: TextStyle(fontSize: 10),),
         Flex(
           direction: Axis.horizontal,
           children: <Widget>[
