@@ -104,7 +104,7 @@ class JPG_Page extends StatelessWidget{
           direction: Axis.horizontal,
           children: <Widget>[
             Spacer(flex: 22,),
-            Expanded(flex: 20, child: FilledButton(onPressed: (){Clipboard.setData(ClipboardData(text: "k2vl"));launchUrlString('https://cloud.189.cn/t/aYjErqV3Uruu');} ,child: Text('前往下载'),)),//k2vl
+            Expanded(flex: 20, child: FilledButton(onPressed: (){launchUrlString('https://cloud.189.cn/web/share?code=aYjErqV3Uruu（访问码：k2vl）');} ,child: Text('前往下载'),)),//k2vl
             Spacer(flex: 22,)
           ],
         ),
@@ -114,7 +114,7 @@ class JPG_Page extends StatelessWidget{
           direction: Axis.horizontal,
           children: <Widget>[
             Spacer(flex: 22,),
-            Expanded(flex: 20, child: ElevatedButton(onPressed: (){Clipboard.setData(ClipboardData(text: "https://cloud.189.cn/t/aYjErqV3Uruu"));} ,child: Text('复制'))),
+            Expanded(flex: 20, child: ElevatedButton(onPressed: (){Clipboard.setData(ClipboardData(text: "https://cloud.189.cn/web/share?code=aYjErqV3Uruu（访问码：k2vl）"));} ,child: Text('复制'))),
             Spacer(flex: 22,),
           ]
         )
@@ -141,7 +141,7 @@ class JPG_RAW_Page extends StatelessWidget{
           direction: Axis.horizontal,
           children: <Widget>[
             Spacer(flex: 22,),
-            Expanded(flex: 15, child: FilledButton(onPressed: (){Clipboard.setData(ClipboardData(text: "ywk1"));launchUrlString('https://cloud.189.cn/t/m2E3mireIf6v');} ,child: Text('前往下载'))),//ywk1
+            Expanded(flex: 15, child: FilledButton(onPressed: (){launchUrlString('https://cloud.189.cn/web/share?code=m2E3mireIf6v（访问码：ywk1）');} ,child: Text('前往下载'))),//ywk1
             Spacer(flex: 22,),
           ],
         ),
@@ -151,7 +151,7 @@ class JPG_RAW_Page extends StatelessWidget{
           direction: Axis.horizontal,
           children: <Widget>[
             Spacer(flex: 22,),
-            Expanded(flex: 15, child: ElevatedButton(onPressed: (){Clipboard.setData(ClipboardData(text: "https://cloud.189.cn/t/m2E3mireIf6v"));} ,child: Text('复制'))),
+            Expanded(flex: 15, child: ElevatedButton(onPressed: (){Clipboard.setData(ClipboardData(text: "https://cloud.189.cn/web/share?code=m2E3mireIf6v（访问码：ywk1）"));} ,child: Text('复制'))),
             Spacer(flex: 22,),
           ]
         )
