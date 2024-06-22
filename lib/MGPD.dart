@@ -141,7 +141,7 @@ class JPG_RAW_Page extends StatelessWidget{
           direction: Axis.horizontal,
           children: <Widget>[
             Spacer(flex: 22,),
-            Expanded(flex: 15, child: FilledButton(onPressed: (){launchUrlString('https://cloud.189.cn/web/share?code=m2E3mireIf6v（访问码：ywk1）');} ,child: Text('前往下载'))),//ywk1
+            Expanded(flex: 20, child: FilledButton(onPressed: (){launchUrlString('https://cloud.189.cn/web/share?code=m2E3mireIf6v（访问码：ywk1）');} ,child: Text('前往下载'))),//ywk1
             Spacer(flex: 22,),
           ],
         ),
@@ -151,7 +151,7 @@ class JPG_RAW_Page extends StatelessWidget{
           direction: Axis.horizontal,
           children: <Widget>[
             Spacer(flex: 22,),
-            Expanded(flex: 15, child: ElevatedButton(onPressed: (){Clipboard.setData(ClipboardData(text: "https://cloud.189.cn/web/share?code=m2E3mireIf6v（访问码：ywk1）"));} ,child: Text('复制'))),
+            Expanded(flex: 20, child: ElevatedButton(onPressed: (){Clipboard.setData(ClipboardData(text: "https://cloud.189.cn/web/share?code=m2E3mireIf6v（访问码：ywk1）"));} ,child: Text('复制'))),
             Spacer(flex: 22,),
           ]
         )
