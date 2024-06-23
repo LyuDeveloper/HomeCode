@@ -1,5 +1,40 @@
-2024/06/21-21:43:44.367 64c8 Reusing MANIFEST C:\Users\95974\AppData\Local\Temp\flutter_tools.e5564e97\flutter_tools_chrome_device.190a799e\Default\Session Storage/MANIFEST-000001
-2024/06/21-21:43:44.370 64c8 Recovering log #6
-2024/06/21-21:43:44.377 64c8 Reusing old log C:\Users\95974\AppData\Local\Temp\flutter_tools.e5564e97\flutter_tools_chrome_device.190a799e\Default\Session Storage/000006.log 
-2024/06/21-21:43:44.379 64c8 Delete type=0 #3
-2024/06/21-21:43:44.379 64c8 Delete type=0 #4
+2024/06/23-12:29:09.030 5fa8 Reusing MANIFEST C:\Users\95974\AppData\Local\Temp\flutter_tools.c4fc46f2\flutter_tools_chrome_device.9a9c7270\Default\Session Storage/MANIFEST-000001
+2024/06/23-12:29:09.032 5fa8 Recovering log #6
+2024/06/23-12:29:09.038 5fa8 Reusing old log C:\Users\95974\AppData\Local\Temp\flutter_tools.c4fc46f2\flutter_tools_chrome_device.9a9c7270\Default\Session Storage/000006.log 
+2024/06/23-12:29:09.039 5fa8 Delete type=0 #3
+2024/06/23-12:29:09.039 5fa8 Delete type=0 #4
+2024/06/23-12:29:41.935 5f2c Level-0 table #10: started
+2024/06/23-12:29:41.943 5f2c Level-0 table #10: 212441 bytes OK
+2024/06/23-12:29:41.947 5f2c Delete type=0 #6
+2024/06/23-12:38:07.624 5f2c Level-0 table #12: started
+2024/06/23-12:38:07.640 5f2c Level-0 table #12: 209198 bytes OK
+2024/06/23-12:38:07.644 5f2c Delete type=0 #9
+2024/06/23-12:38:07.645 5f2c Compacting 4@0 + 0@1 files
+2024/06/23-12:38:07.662 5f2c Generated table #13@0: 36 keys, 407914 bytes
+2024/06/23-12:38:07.662 5f2c Compacted 4@0 + 0@1 files => 407914 bytes
+2024/06/23-12:38:07.664 5f2c compacted to: files[ 0 1 0 0 0 0 0 ]
+2024/06/23-12:38:07.666 5f2c Delete type=2 #3
+2024/06/23-12:38:07.667 5f2c Delete type=2 #7
+2024/06/23-12:38:07.667 5f2c Delete type=2 #10
+2024/06/23-12:38:07.667 5f2c Delete type=2 #12
+2024/06/23-12:38:15.109 5f2c Level-0 table #15: started
+2024/06/23-12:38:15.119 5f2c Level-0 table #15: 303817 bytes OK
+2024/06/23-12:38:15.121 5f2c Delete type=0 #11
+2024/06/23-12:46:40.998 5fa8 Level-0 table #17: started
+2024/06/23-12:46:41.018 5fa8 Level-0 table #17: 267746 bytes OK
+2024/06/23-12:46:41.020 5fa8 Delete type=0 #14
+2024/06/23-12:57:12.874 5f2c Level-0 table #19: started
+2024/06/23-12:57:12.888 5f2c Level-0 table #19: 315781 bytes OK
+2024/06/23-12:57:12.890 5f2c Delete type=0 #16
+2024/06/23-13:02:18.496 5f2c Level-0 table #21: started
+2024/06/23-13:02:18.510 5f2c Level-0 table #21: 212643 bytes OK
+2024/06/23-13:02:18.513 5f2c Delete type=0 #18
+2024/06/23-13:02:18.514 5f2c Compacting 4@0 + 1@1 files
+2024/06/23-13:02:18.544 5f2c Generated table #22@0: 105 keys, 1506711 bytes
+2024/06/23-13:02:18.544 5f2c Compacted 4@0 + 1@1 files => 1506711 bytes
+2024/06/23-13:02:18.544 5f2c compacted to: files[ 0 1 0 0 0 0 0 ]
+2024/06/23-13:02:18.545 5f2c Delete type=2 #13
+2024/06/23-13:02:18.545 5f2c Delete type=2 #15
+2024/06/23-13:02:18.546 5f2c Delete type=2 #17
+2024/06/23-13:02:18.546 5f2c Delete type=2 #19
+2024/06/23-13:02:18.546 5f2c Delete type=2 #21

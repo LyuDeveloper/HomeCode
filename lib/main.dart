@@ -2,10 +2,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter_web_home/MGPD.dart';
+import 'package:flutter_web_home/article.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -55,7 +57,28 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+class ThemeImage extends StatelessWidget {
+  final String lightImage;
+  final String darkImage;
+
+  ThemeImage({
+    required this.lightImage,
+    required this.darkImage,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDarkMode = theme.brightness == Brightness.dark;
+
+    final imageAsset = isDarkMode ? darkImage : lightImage;
+
+    return Image(image: AssetImage(imageAsset));
+  }
+}
+
 class _MyHomePageState extends State<MyHomePage> {
+  
   Future<bool?> MailDialog(){
     return showDialog(
       context: context,
@@ -142,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
         slivers: <Widget>[
           SliverAppBar(
             pinned: true,
-            expandedHeight: 200.0,
+            expandedHeight: 300.0,
             flexibleSpace: FlexibleSpaceBar(
               title: const Text('Lyu Web Home'),
               background: Image.asset("bg.png",fit: BoxFit.cover,),
@@ -158,7 +181,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 const Spacer(flex: 1,),
                 Expanded(flex: 20,child: FilledButton.icon(onPressed: () async {await PrivateDialog();}, icon: const Icon(Icons.lock_person,size: 15,),label: Text('私有'),),),
                 const Spacer(flex: 1,),
-                Expanded(flex: 20,child: FilledButton.icon(onPressed: (){const snackBar = SnackBar(content: Text('敬请期待'),);ScaffoldMessenger.of(context).showSnackBar(snackBar);}, icon: const Icon(Icons.book,size: 15,),label: Text('文章'),),),
+                Expanded(flex: 20,child: FilledButton.icon(onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder:(context) => ArticlePage()));}, icon: const Icon(Icons.book,size: 15,),label: Text('文章'),),),
                 const Spacer(flex: 1,),
                 Expanded(flex: 20,child: FilledButton.icon(onPressed: (){const snackBar = SnackBar(content: Text('敬请期待'),);ScaffoldMessenger.of(context).showSnackBar(snackBar);}, icon: const Icon(Icons.folder_copy, size: 15,),label: Text('项目'),),),
                 const Spacer(flex: 1,)
@@ -211,6 +234,20 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
+          const SliverPadding(
+              padding: EdgeInsets.only(top: 50),
+          ),
+          SliverToBoxAdapter(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text('\nPowered by   \n', style: TextStyle(fontSize: 11)),
+                SizedBox(width: 30, child: ThemeImage(lightImage: 'github.png', darkImage: 'github_white.png'),),
+                SizedBox(width: 80, child: ThemeImage(lightImage: 'Github_Logo.png', darkImage: 'GitHub_Logo_White.png'),),
+                Text('Page',style: TextStyle(fontSize: 22),),
+              ],
+            ),
+          )
         ],
       ),
     );

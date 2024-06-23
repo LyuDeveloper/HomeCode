@@ -35,7 +35,7 @@ class _MatesPhotoDownload extends State<MatesPhotoDownload> with SingleTickerPro
         slivers: <Widget>[
           SliverAppBar(
             pinned: true,
-            expandedHeight: 200.0,
+            expandedHeight: 300.0,
             flexibleSpace: FlexibleSpaceBar(
               title: const Text('欢迎'),
               background: Image.asset("bg.png",fit: BoxFit.cover,),
