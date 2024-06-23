@@ -29,4 +29,4 @@ flutter:
   assets:
   - ./web/assets/Article.png
   - ./web/assets/files.json
-  - ./web/assets/article/欢迎.md
+  - ./web/assets/article/Article1_Welcome.md

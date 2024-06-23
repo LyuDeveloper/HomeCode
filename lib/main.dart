@@ -243,7 +243,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Text('\nPowered by   \n', style: TextStyle(fontSize: 11)),
                 SizedBox(width: 30, child: ThemeImage(lightImage: 'github.png', darkImage: 'github_white.png'),),
-                SizedBox(width: 80, child: ThemeImage(lightImage: 'Github_Logo.png', darkImage: 'GitHub_Logo_White.png'),),
+                SizedBox(width: 80, child: ThemeImage(lightImage: 'GitHub_Logo.png', darkImage: 'GitHub_Logo_White.png'),),
                 Text('Page',style: TextStyle(fontSize: 22),),
               ],
             ),

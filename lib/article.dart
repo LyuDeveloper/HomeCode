@@ -1,6 +1,5 @@
 import 'dart:convert';
-// 导入dart:html包
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/widgets.dart';
@@ -56,11 +55,17 @@ class ArticlePageCode extends State<ArticlePage> {
                 final file = files[index];
                 final fileName = file['name'];
                 final lastModified = file['lastModified'];
-
+                final fileTitle = file['filetitle'];
+                final fileFirstLine = file['firstline'];
+                print(file);
+                print(fileName);
+                print(lastModified);
+                print(fileTitle);
+                print(fileFirstLine);
                 return ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => ReadArtPage(filename: fileName),
+                      builder: (context) => ReadArtPage(filename: fileName,filetitle: fileTitle,),
                     ));
                   },
                   style: ElevatedButton.styleFrom(
@@ -73,7 +78,7 @@ class ArticlePageCode extends State<ArticlePage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        fileName,
+                        fileTitle,
                         style: TextStyle(fontSize: 18),
                       ),
                       SizedBox(height: 10),
@@ -81,6 +86,14 @@ class ArticlePageCode extends State<ArticlePage> {
                         lastModified,
                         style: TextStyle(fontSize: 14),
                       ),
+                      Text(
+                        fileFirstLine,
+                        style: TextStyle(fontSize: 10,color: Colors.black),
+                      ),
+                      Text(
+                        '\n$fileName',
+                        style: TextStyle(fontSize: 10,color: Colors.grey),
+                      )
                     ],
                   ),
                 );

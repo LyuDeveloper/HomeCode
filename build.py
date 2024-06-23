@@ -2,6 +2,7 @@ import os,time
 filepath = '.\\web\\assets\\article'
 filelist = os.listdir(filepath)
 timelist = []
+titlelist = ['欢迎']
 for i in filelist:
     timeclick = os.path.getmtime('.\\web\\assets\\article\\'+i)
     loacl_time = time.localtime(timeclick)
@@ -39,22 +40,35 @@ flutter:
   - ./web/assets/Article.png
   - ./web/assets/files.json
   """
+
+def wordonly(context):
+    context = context.split(' ', 1)
+    result = context[-1]
+    result = result.strip('\n')
+    print(result)
+    return result
+
 for i in range(len(filelist)):
     filename = filelist[i]
     filetime = timelist[i]
-    print(filename)
+    filetitle = titlelist[i]
+    file = open('.\\web\\assets\\article\\%s' % filename , 'r',encoding = "utf-8")
+    file1stline = file.readline()
+    file1stline = wordonly(file1stline)
     towrite += """
     {
       "name": "%s",
-      "lastModified": "%s"
-    }""" % (filename,filetime)
+      "lastModified": "%s",
+      "filetitle": "%s",
+      "firstline": "%s"
+    }""" % (filename,filetime,filetitle,file1stline)
     topub += "- ./web/assets/article/%s" % filename
     if i+1 != len(filelist):
         towrite += ',\n'
     else:
         towrite += '\n'
 towrite += '  ]'
-js = open('.\\web\\assets\\files.json', 'wt',encoding= "utf-8")
+js = open('.\\web\\assets\\files.json', 'wt',encoding = "utf-8")
 js.write(towrite)
 js.close()
 
