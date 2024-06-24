@@ -2,7 +2,6 @@ import os,time
 filepath = '.\\web\\assets\\article'
 filelist = os.listdir(filepath)
 timelist = []
-titlelist = ['欢迎']
 for i in filelist:
     timeclick = os.path.getmtime('.\\web\\assets\\article\\'+i)
     loacl_time = time.localtime(timeclick)
@@ -51,8 +50,9 @@ def wordonly(context):
 for i in range(len(filelist)):
     filename = filelist[i]
     filetime = timelist[i]
-    filetitle = titlelist[i]
     file = open('.\\web\\assets\\article\\%s' % filename , 'r',encoding = "utf-8")
+    filetitle = file.readline()
+    filetitle = wordonly(filetitle)
     file1stline = file.readline()
     file1stline = wordonly(file1stline)
     towrite += """
