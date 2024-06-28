@@ -41,7 +41,7 @@ class ArticlePageCode extends State<ArticlePage> {
             expandedHeight: 300.0,
             flexibleSpace: FlexibleSpaceBar(
               title: const Text('文章'),
-              background: Image.asset("bg.png", fit: BoxFit.cover,),
+              background: Image.asset("Article.png", fit: BoxFit.cover,),
             ),
           ),
           const SliverPadding(
