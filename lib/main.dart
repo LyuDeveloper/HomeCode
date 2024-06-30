@@ -124,8 +124,8 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Icon(Icons.person_add),
           content: Text("欢迎新朋友\n(^-^)联系方式"),
           actions: <Widget>[
-            Expanded(flex: 20,child: FilledButton.icon(onPressed: () {launchUrlString('https://space.bilibili.com/2059291308');},icon: const Icon(Icons.live_tv,size: 15,) ,label: Text('B站主页')),),
-            Expanded(flex: 20,child: FilledButton.icon(onPressed: () async {await MailDialog();},icon: Icon(Icons.mail,size: 15,), label: Text('邮箱'),),),
+            FilledButton.icon(onPressed: () {launchUrlString('https://space.bilibili.com/2059291308');},icon: const Icon(Icons.live_tv,size: 15,) ,label: Text('B站主页')),
+            FilledButton.icon(onPressed: () async {await MailDialog();},icon: Icon(Icons.mail,size: 15,), label: Text('邮箱'),),
           ],
         );
       }
