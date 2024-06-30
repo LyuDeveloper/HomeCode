@@ -23,7 +23,7 @@ class _MatesPhotoDownload extends State<MatesPhotoDownload> with SingleTickerPro
   }
 
   @override
-    Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //

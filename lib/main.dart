@@ -1,8 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter_web_home/MGPD.dart';
-import 'package:flutter_web_home/article.dart';
+import 'package:flutter_web_home/article_read.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 
@@ -79,16 +81,51 @@ class ThemeImage extends StatelessWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   
+  List<Map<String, dynamic>> files = [];
+  @override
+  void initState() {
+    super.initState();
+    _loadFileNames(); 
+  }
+
+  Future<void> _loadFileNames() async {
+    try {
+      final String response = await rootBundle.loadString('files.json');
+      final List<dynamic> data = json.decode(response);
+      setState(() {
+        files = data.map((e) => e as Map<String, dynamic>).toList();
+      });
+    } catch (e) {
+      print("Error loading file names: $e");
+    }
+  }
+
+
   Future<bool?> MailDialog(){
     return showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
           title: Icon(Icons.mail),
-          content: Text("邮件地址:\nlyupublic@outlook.com\n请向该邮箱发送邮件"),
+          content: const Text("邮件地址:\nlyupublic@outlook.com\n请向该邮箱发送邮件"),
           actions: <Widget>[
           OutlinedButton(onPressed: () => Navigator.of(context).pop(true), child: Text('确认')),
           FilledButton(onPressed: (){Clipboard.setData(ClipboardData(text: "lyupublic@outlook.com"));}, child: Text('复制地址'))
+          ],
+        );
+      }
+    );
+  }
+  Future<bool?> ContactDialog(){
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Icon(Icons.person_add),
+          content: Text("欢迎新朋友\n(^-^)联系方式"),
+          actions: <Widget>[
+            Expanded(flex: 20,child: FilledButton.icon(onPressed: () {launchUrlString('https://space.bilibili.com/2059291308');},icon: const Icon(Icons.live_tv,size: 15,) ,label: Text('B站主页')),),
+            Expanded(flex: 20,child: FilledButton.icon(onPressed: () async {await MailDialog();},icon: Icon(Icons.mail,size: 15,), label: Text('邮箱'),),),
           ],
         );
       }
@@ -160,12 +197,16 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
+    
+
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
             pinned: true,
             expandedHeight: 300.0,
+            actions: const <Widget> [ClipOval(child: Image(image: AssetImage('head.jpeg'),height: 40,))],
             flexibleSpace: FlexibleSpaceBar(
               title: const Text('Lyu Web Home'),
               background: Image.asset("bg.png",fit: BoxFit.cover,),
@@ -173,35 +214,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           const SliverPadding(
               padding: EdgeInsets.only(top: 10),
-            ),
-          SliverToBoxAdapter(
-            child:Flex(
-              direction: Axis.horizontal,
-              children: <Widget>[
-                const Spacer(flex: 1,),
-                Expanded(flex: 20,child: FilledButton.icon(onPressed: () async {await PrivateDialog();}, icon: const Icon(Icons.lock_person,size: 15,),label: Text('私有'),),),
-                const Spacer(flex: 1,),
-                Expanded(flex: 20,child: FilledButton.icon(onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder:(context) => ArticlePage()));}, icon: const Icon(Icons.book,size: 15,),label: Text('文章'),),),
-                const Spacer(flex: 1,),
-                Expanded(flex: 20,child: FilledButton.icon(onPressed: (){const snackBar = SnackBar(content: Text('敬请期待'),);ScaffoldMessenger.of(context).showSnackBar(snackBar);}, icon: const Icon(Icons.folder_copy, size: 15,),label: Text('项目'),),),
-                const Spacer(flex: 1,)
-              ],
-            )
           ),
-          const SliverPadding(
-              padding: EdgeInsets.only(top: 20),
-            ),
           const SliverToBoxAdapter(
             child: Column(
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Icon(Icons.person,size: 40,),
-                    Text("你好",textScaleFactor: 2,)
-                  ],
-                ),
-                Text('欢迎访问 Lyu<0x2279fc8e> 的个人主页'),
+                Text('欢迎访问 Lyu 的个人主页',style: TextStyle(fontSize: 25),),
                 Text('本人在校学生，想在互联网上留点什么'),
                 Text('于是你就看到了这个网站')
               ],
@@ -210,33 +227,97 @@ class _MyHomePageState extends State<MyHomePage> {
           const SliverPadding(
               padding: EdgeInsets.only(top: 20),
           ),
-          SliverToBoxAdapter(
-            child: ClipOval(child: Image(image: AssetImage('head.jpeg'),height: 50,),)
-          ),
-          
           const SliverPadding(
               padding: EdgeInsets.only(top: 20),
           ),
           SliverToBoxAdapter(
-            child: Column(
-              children: <Widget>[
-                const Text('联系我',textScaleFactor: 2,),
-                Flex(
-                  direction: Axis.horizontal,
-                  children: <Widget>[
-                    const Spacer(flex: 11,),
-                    Expanded(flex: 20,child: FilledButton.icon(onPressed: () {launchUrlString('https://space.bilibili.com/2059291308');},icon: const Icon(Icons.live_tv,size: 15,) ,label: Text('B站主页')),),
-                    const Spacer(flex: 1,),
-                    Expanded(flex: 20,child: FilledButton.icon(onPressed: () async {await MailDialog();},icon: Icon(Icons.mail,size: 15,), label: Text('邮箱'),),),
-                    const Spacer(flex: 11,),
-                  ],
-                )
+            child: Flex(
+              direction:Axis.horizontal,
+              children: [
+                const Spacer(flex: 1),
+                const Expanded(
+                  flex: 20,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(Icons.book,size: 30,),
+                      Text("文章",style: TextStyle(fontSize: 20))
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 20,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      IconButton(onPressed: (){print('search');}, icon: const Icon(Icons.search))
+                    ],
+                  ),
+                ),
+                const Spacer(flex: 1)
               ],
+            )
+          ),
+          const SliverPadding(
+              padding: EdgeInsets.only(top: 20),
+          ),
+          SliverToBoxAdapter(
+            child: Wrap(
+              spacing: 8.0,
+              runSpacing: 4.0,
+              children: List.generate(files.length, (index) {
+                final file = files[index];
+                final fileName = file['name'];
+                final lastModified = file['lastModified'];
+                final fileTitle = file['filetitle'];
+                final fileFirstLine = file['firstline'];
+                print(file);
+                print(fileName);
+                print(lastModified);
+                print(fileTitle);
+                print(fileFirstLine);
+                return ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ReadArtPage(filename: fileName,filetitle: fileTitle,),
+                    ));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(200, 200),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        fileTitle,
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        lastModified,
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      Text(
+                        fileFirstLine,
+                        style: TextStyle(fontSize: 10,color: Colors.black),
+                      ),
+                      Text(
+                        '\n$fileName',
+                        style: TextStyle(fontSize: 10,color: Colors.grey),
+                      )
+                    ],
+                  ),
+                );
+              }),
             ),
           ),
           const SliverPadding(
               padding: EdgeInsets.only(top: 50),
           ),
+          
           SliverToBoxAdapter(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -247,9 +328,29 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text('Page',style: TextStyle(fontSize: 22),),
               ],
             ),
-          )
+          ),
         ],
       ),
+      floatingActionButton: Stack(
+      children: <Widget>[
+        Padding(padding: EdgeInsets.only(bottom:80),
+        child: Align(
+          alignment: Alignment.bottomRight,
+          child: FloatingActionButton(
+            heroTag: "私有",
+            onPressed: ()async {await PrivateDialog();},
+            child: Icon(Icons.lock),),
+        ),),
+
+        Align(
+          alignment: Alignment.bottomRight,
+          child: FloatingActionButton(
+            heroTag: "联系我",
+            onPressed: () async {await ContactDialog();},
+          child: Icon(Icons.person_add),),
+        ),
+      ],
+      )
     );
   }
 }
