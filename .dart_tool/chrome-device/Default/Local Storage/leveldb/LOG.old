@@ -1,5 +1,9 @@
-2024/06/30-21:06:25.711 53f4 Reusing MANIFEST C:\Users\95974\AppData\Local\Temp\flutter_tools.39477497\flutter_tools_chrome_device.3cf52d84\Default\Local Storage\leveldb/MANIFEST-000001
-2024/06/30-21:06:25.719 53f4 Recovering log #9
-2024/06/30-21:06:25.722 53f4 Reusing old log C:\Users\95974\AppData\Local\Temp\flutter_tools.39477497\flutter_tools_chrome_device.3cf52d84\Default\Local Storage\leveldb/000009.log 
-2024/06/30-21:06:25.723 53f4 Delete type=0 #3
-2024/06/30-21:06:25.723 53f4 Delete type=0 #4
+2024/07/02-11:41:38.973 1a44 Reusing MANIFEST C:\Users\95974\AppData\Local\Temp\flutter_tools.82a86573\flutter_tools_chrome_device.1d3193a8\Default\Local Storage\leveldb/MANIFEST-000001
+2024/07/02-11:41:38.989 1a44 Recovering log #9
+2024/07/02-11:41:38.989 1a44 (ignoring error) C:\Users\95974\AppData\Local\Temp\flutter_tools.82a86573\flutter_tools_chrome_device.1d3193a8\Default\Local Storage\leveldb/000009.log: dropping 6538 bytes; Corruption: checksum mismatch
+2024/07/02-11:41:38.992 1a44 Reusing old log C:\Users\95974\AppData\Local\Temp\flutter_tools.82a86573\flutter_tools_chrome_device.1d3193a8\Default\Local Storage\leveldb/000009.log 
+2024/07/02-11:41:38.993 1a44 Delete type=0 #3
+2024/07/02-11:41:38.993 1a44 Delete type=0 #4
+2024/07/02-11:43:28.079 5d18 Level-0 table #13: started
+2024/07/02-11:43:28.084 5d18 Level-0 table #13: 21432 bytes OK
+2024/07/02-11:43:28.086 5d18 Delete type=0 #9

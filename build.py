@@ -57,10 +57,10 @@ for i in range(len(filelist)):
     file1stline = wordonly(file1stline)
     towrite += """
     {
-      "name": "%s",
-      "lastModified": "%s",
-      "filetitle": "%s",
-      "firstline": "%s"
+      "link": "%s",
+      "info": "%s",
+      "title": "%s",
+      "intro": "%s"
     }""" % (filename,filetime,filetitle,file1stline)
     topub += "- ./web/assets/article/%s" % filename
     if i+1 != len(filelist):

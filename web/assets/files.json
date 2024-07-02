@@ -1,8 +1,8 @@
 [
     {
-      "name": "Article1_Welcome.md",
-      "lastModified": "2024.06.23",
-      "filetitle": "暂时没有文章",
-      "firstline": "也许以后会有"
+      "link": "Article1_Welcome.md",
+      "info": "2024.06.23",
+      "title": "暂时没有文章",
+      "intro": "也许以后会有"
     }
   ]
