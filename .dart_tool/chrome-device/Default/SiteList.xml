@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<site-list version="63">
+<site-list version="64">
  <site url="cpc.geely.com">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
@@ -177,9 +177,6 @@
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="https://ga.samsunglife.com">
-  <open-in allow-redirect="true">IE11</open-in>
- </site>
- <site url="https://gov.epeople.go.kr">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="https://grdms.bit.edu.cn">
@@ -811,6 +808,12 @@
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="https://www.4399.com/flash/zmhj.htm">
+  <open-in allow-redirect="true">IE11</open-in>
+ </site>
+ <site url="https://www.xjrccb.com.cn">
+  <open-in allow-redirect="true">IE11</open-in>
+ </site>
+ <site url="https://www.yljr.com">
   <open-in allow-redirect="true">IE11</open-in>
  </site>
  <site url="https://www.zj96596.com">

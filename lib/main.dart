@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:dynamic_color/dynamic_color.dart';
@@ -41,7 +42,7 @@ class ThemeImage extends StatelessWidget {
   final String lightImage;
   final String darkImage;
 
-  ThemeImage({
+  const ThemeImage({super.key, 
     required this.lightImage,
     required this.darkImage,
   });
@@ -57,7 +58,6 @@ class ThemeImage extends StatelessWidget {
   }
 }
 
-
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -70,8 +70,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool isProjectButtonEnabled = true;
   bool isArticleButtonEnabled = false;
-  double cardWidth = 200;
-  double cardHeigh = 220;
+  String photofolder = "article_photo/";
 
   List<Map<String, dynamic>> files = [];
 
@@ -82,15 +81,21 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<bool?> MailDialog() {
+    
+    const copyBar = SnackBar(
+      content: Text('已复制到剪切板'),
+      duration: Duration(milliseconds: 1500),
+    );
+
     return showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Icon(Icons.mail),
+          title: const Icon(Icons.mail),
           content: const Text("邮件地址:\nlyupublic@outlook.com\n请向该邮箱发送邮件"),
           actions: <Widget>[
-            OutlinedButton(onPressed: () => Navigator.of(context).pop(true), child: Text('确认')),
-            FilledButton(onPressed: () {Clipboard.setData(ClipboardData(text: "lyupublic@outlook.com"));}, child: Text('复制地址'))
+            OutlinedButton(onPressed: () => Navigator.of(context).pop(true), child: const Text('确认')),
+            FilledButton(onPressed: () {Clipboard.setData(const ClipboardData(text: "lyupublic@outlook.com"));ScaffoldMessenger.of(context).showSnackBar(copyBar);}, child: const Text('复制地址'))
           ],
         );
       }
@@ -102,19 +107,19 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Icon(Icons.person_add),
+          title: const Icon(Icons.person_add),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text("联系我"),
-              SizedBox(height: 5,),
-              FilledButton.tonalIcon(onPressed: () {launchUrlString('https://space.bilibili.com/2059291308');}, icon: const Icon(Icons.live_tv, size: 15,), label: Text('B站主页')),
-              SizedBox(height: 5,),
-              FilledButton.tonalIcon(onPressed: () async {await MailDialog();}, icon: Icon(Icons.mail, size: 15,), label: Text('邮箱')),
+              const Text("联系我"),
+              const SizedBox(height: 5,),
+              FilledButton.tonalIcon(onPressed: () {launchUrlString('https://space.bilibili.com/2059291308');}, icon: const Icon(Icons.live_tv, size: 15,), label: const Text('B站主页')),
+              const SizedBox(height: 5,),
+              FilledButton.tonalIcon(onPressed: () async {await MailDialog();}, icon: const Icon(Icons.mail, size: 15,), label: const Text('邮箱')),
             ]
           ),
           actions: <Widget>[
-            FilledButton(onPressed: () => Navigator.of(context).pop(true), child: Text('确认')),
+            FilledButton(onPressed: () => Navigator.of(context).pop(true), child: const Text('确认')),
           ],
         );
       }
@@ -128,17 +133,17 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, dialogState) => AlertDialog(
-          title: Icon(Icons.lock_person),
+          title: const Icon(Icons.lock_person),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text("输入Private Key以查看私有内容"),
+              const Text("输入Private Key以查看私有内容"),
               TextField(
                 onChanged: (a) {
                   result = a;
                 },
                 autofocus: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Private Key",
                   hintText: "在此输入",
                   prefixIcon: Icon(Icons.key)
@@ -148,35 +153,36 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
           actions: <Widget>[
-            OutlinedButton(onPressed: () {Navigator.of(context).pop();}, child: Text('取消')),
+            OutlinedButton(onPressed: () {Navigator.of(context).pop();}, child: const Text('取消')),
             FilledButton(onPressed: () {
-              print(result);
+              if (kDebugMode) {
+                print(result);
+              }
               if (result != '') {
                 if (result == '2021mates') {
                   dialogState(() => result);
                   see = '';
-                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new MatesPhotoDownload()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MatesPhotoDownload()));
                 } else {
                   dialogState(() => result);
-                  see = '无 ' + result + ' 的内容';
+                  see = '无 $result 的内容';
                   if (see.length >= 29) {
                     see = '无结果';
                   }
-                  print('No Results');
                 }
               } else {
                 result = '';
                 dialogState(() => result);
                 see = '';
               }
-            }, child: Text('确认'))
+            }, child: const Text('确认'))
           ],
         )
       )
     );
   }
 
-  String search_label = '文章';
+  String searchlabel = '文章';
   String fileWillBeLoadName = 'files.json';
 
   Future<void> _loadFileNames() async {
@@ -187,7 +193,9 @@ class _MyHomePageState extends State<MyHomePage> {
         files = data.map((e) => e as Map<String, dynamic>).toList();
       });
     } catch (e) {
-      print("Error loading file names: $e");
+      if (kDebugMode) {
+        print("Error loading file names: $e");
+      }
     }
   }
 
@@ -196,21 +204,19 @@ class _MyHomePageState extends State<MyHomePage> {
       isProjectButtonEnabled = !isProjectButtonEnabled;
       isArticleButtonEnabled = !isArticleButtonEnabled;
       if(isArticleButtonEnabled == false){
-        search_label = '文章'; fileWillBeLoadName = 'files.json';
-        cardWidth = 200;
-        cardHeigh = 220;
-      };
+        searchlabel = '文章'; fileWillBeLoadName = 'files.json';
+        photofolder = 'article_photo/';
+      }
       if(isProjectButtonEnabled == false){
-        search_label = '项目'; fileWillBeLoadName = 'projects.json';
-        cardWidth = 300;
-        cardHeigh = 150;
-      };
+        searchlabel = '项目'; fileWillBeLoadName = 'projects.json';
+        photofolder = 'project_photo/';
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    const wait_expect = SnackBar(
+    const waitExpect = SnackBar(
       content: Text('搜索功能敬请期待~'),
       duration: Duration(milliseconds: 1500),
     );
@@ -250,19 +256,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(width: 10,),
+                      const SizedBox(width: 10,),
                       FilledButton.icon(
                         onPressed: isArticleButtonEnabled ? () {toggleButtons();_loadFileNames();} : null, 
-                        icon: Icon(Icons.book, size: 20,), 
-                        label: Text('文章'),
+                        icon: const Icon(Icons.book, size: 20,), 
+                        label: const Text('文章'),
                       ),
-                      SizedBox(width: 10,),
+                      const SizedBox(width: 10,),
                       FilledButton.icon(
                         onPressed: isProjectButtonEnabled ? () {toggleButtons(); _loadFileNames();} : null, 
-                        icon: Icon(Icons.folder_copy, size: 20,), 
-                        label: Text('项目'),
+                        icon: const Icon(Icons.folder_copy, size: 20,), 
+                        label: const Text('项目'),
                       ),
-                      SizedBox(width: 10,),
+                      const SizedBox(width: 10,),
                     ],
                   ),
                 ),
@@ -270,10 +276,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Text(search_label, style: TextStyle(fontSize: 15),),
-                      SizedBox(width: 5,),
-                      IconButton(onPressed: () {ScaffoldMessenger.of(context).showSnackBar(wait_expect);}, icon: const Icon(Icons.search)),
-                      SizedBox(width: 10,)
+                      Text(searchlabel, style: const TextStyle(fontSize: 15),),
+                      const SizedBox(width: 5,),
+                      IconButton(onPressed: () {ScaffoldMessenger.of(context).showSnackBar(waitExpect);}, icon: const Icon(Icons.search)),
+                      const SizedBox(width: 10,)
                     ],
                   ),
                 ),
@@ -284,60 +290,78 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: EdgeInsets.only(top: 20),
           ),
           SliverToBoxAdapter(
-            child: Row(
-              children: [
-                SizedBox(width: 10,),
-                Wrap(
-                  spacing: 8.0,
-                  runSpacing: 4.0,
-                  children: List.generate(files.length, (index) {
-                    final object = files[index];
-                    final link = object['link'];
-                    final info = object['info'];
-                    final Title = object['title'];
-                    final introduction = object['intro'];
-                    return ElevatedButton(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 8.0,
+                runSpacing: 4.0,
+                children: List.generate(files.length, (index) {
+                  final object = files[index];
+                  final link = object['link'];
+                  final info = object['info'];
+                  final title = object['title'];
+                  final introduction = object['intro'];
+                  final photo = object['photo'];
+                  return SizedBox(
+                    width: 300,
+                    height: 150,
+                    child: ElevatedButton(
                       onPressed: () {
                         if(fileWillBeLoadName == 'files.json'){
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => ReadArtPage(filename: link, filetitle: Title,),
+                            builder: (context) => ReadArtPage(filename: link, filetitle: title,),
                           ));
                         }
-                        
                       },
                       style: ElevatedButton.styleFrom(
-                        minimumSize: Size(cardWidth, cardHeigh),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            Title,
-                            style: TextStyle(fontSize: 18),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                title,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                info,
+                                style: const TextStyle(fontSize: 14),
+                              ),
+                              Text(
+                                introduction,
+                                style: const TextStyle(fontSize: 10, color: Colors.black),
+                              ),
+                              Text(
+                                '\n$link',
+                                style: const TextStyle(fontSize: 10, color: Colors.grey),
+                              )
+                            ],
                           ),
-                          SizedBox(height: 10),
-                          Text(
-                            info,
-                            style: TextStyle(fontSize: 14),
+                          const SizedBox(
+                            height: 140,
+                            width: 15,
                           ),
-                          Text(
-                            introduction,
-                            style: TextStyle(fontSize: 10, color: Colors.black),
-                          ),
-                          Text(
-                            '\n$link',
-                            style: TextStyle(fontSize: 10, color: Colors.grey),
+                          SizedBox(
+                            height: 120,
+                            width: 120,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Image(image: AssetImage(photofolder+photo)),
+                            )
                           )
                         ],
-                      ),
-                    );
-                  }),
-                ),
-                const SizedBox(width: 10,)
-              ],
+                      )
+                    ),
+                  );
+                }),
+              ),
             )
           ),
           const SliverPadding(
@@ -347,12 +371,12 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('\nPowered by \n', style: TextStyle(fontSize: 11)),
-                SizedBox(width: 30, child: ThemeImage(lightImage: 'github.png', darkImage: 'github_white.png'),),
-                SizedBox(width: 80, child: ThemeImage(lightImage: 'GitHub_Logo.png', darkImage: 'GitHub_Logo_White.png'),),
-                Text('Page', style: TextStyle(fontSize: 22),),
-                SizedBox(width: 5,),
-                IconButton.filled(onPressed: () {launchUrlString('https://www.github.io/');}, icon: Icon(Icons.open_in_new), iconSize: 20,)
+                const Text('\nPowered by \n', style: TextStyle(fontSize: 11)),
+                const SizedBox(width: 30, child: ThemeImage(lightImage: 'github.png', darkImage: 'github_white.png'),),
+                const SizedBox(width: 80, child: ThemeImage(lightImage: 'GitHub_Logo.png', darkImage: 'GitHub_Logo_White.png'),),
+                const Text('Page', style: TextStyle(fontSize: 22),),
+                const SizedBox(width: 5,),
+                IconButton.filled(onPressed: () {launchUrlString('https://www.github.io/');}, icon: const Icon(Icons.open_in_new), iconSize: 20,)
               ],
             ),
           ),
@@ -361,13 +385,13 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: Stack(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.only(bottom: 80),
+            padding: const EdgeInsets.only(bottom: 80),
             child: Align(
               alignment: Alignment.bottomRight,
               child: FloatingActionButton(
                 heroTag: "私有",
                 onPressed: () async {await PrivateDialog();},
-                child: Icon(Icons.lock_person),
+                child: const Icon(Icons.lock_person),
               ),
             ),
           ),
@@ -376,7 +400,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: FloatingActionButton(
               heroTag: "联系我",
               onPressed: () async {await ContactDialog();},
-              child: Icon(Icons.person_add),
+              child: const Icon(Icons.person_add),
             ),
           ),
         ],
