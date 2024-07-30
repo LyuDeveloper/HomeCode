@@ -225,6 +225,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            leading: Text(''),
             pinned: true,
             expandedHeight: 400.0,
             actions: const <Widget> [ClipOval(child: Image(image: AssetImage('head.jpeg'), height: 40,))],

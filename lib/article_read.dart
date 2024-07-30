@@ -28,11 +28,11 @@ class TitleTextWidget extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return CircularProgressIndicator();
         } else if (snapshot.hasError) {
-          return Text('出现错误: ${snapshot.error}');
+          return const Row(children: [Icon(Icons.error,size: 30,),SizedBox(width: 10,),Text('加载出错',style: TextStyle(fontSize: 18))]);
         } else if (snapshot.hasData) {
-          return Text(snapshot.data!,style: TextStyle(fontSize: 18));
+          return Row(children: [const Icon(Icons.article,size: 30,),const SizedBox(width: 10,),Text(snapshot.data!,style: const TextStyle(fontSize: 18))]);
         } else {
-          return Text('出现错误:无法获取到标题');
+          return const Row(children: [Icon(Icons.error,size: 30,),SizedBox(width: 10,),Text('加载出错',style: TextStyle(fontSize: 18))]);
         }
       },
     );
@@ -56,7 +56,7 @@ class TitleTextWidget extends StatelessWidget {
 }
 
 class _ReadArtPage extends State<ReadArtPage>{
-  String filename;
+  String filename = 'a';
   _ReadArtPage({required this.filename});
 
   var url = Uri.base.toString();
@@ -87,7 +87,7 @@ class _ReadArtPage extends State<ReadArtPage>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(children: [Icon(Icons.article),const SizedBox(width: 10,),TitleTextWidget(name: filename),]),
+        title: TitleTextWidget(name: filename),
         actions: [IconButton(onPressed: () async {await ShareDialog();}, icon: Icon(Icons.share)),
                   IconButton(onPressed: (){GoRouter.of(context).pushNamed("HomePage");}, icon: Icon(Icons.home))],
       ),
@@ -102,9 +102,10 @@ class _ReadArtPage extends State<ReadArtPage>{
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.error),
-                  const Text("加载出错"),
-                  Text('${snapshot.error}',style: const TextStyle(color: Colors.blueGrey,fontSize: 8),)
+                  const Text(': - (',style: TextStyle(fontSize: 80)),
+                  const Text("哦呦, 出错了",style: TextStyle(fontSize: 30),),
+                  const Text('此内容无法被访问\n'),
+                  Text('${snapshot.error}',style: const TextStyle(color: Colors.blueGrey),textAlign: TextAlign.center,)
                 ],
               ),
             );
