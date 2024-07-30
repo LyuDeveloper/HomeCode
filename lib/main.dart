@@ -4,9 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:dynamic_color/dynamic_color.dart';
-import 'package:flutter_web_home/MGPD.dart';
-import 'package:flutter_web_home/article_read.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:go_router/go_router.dart';
+
+import 'MGPD.dart';
+import 'route.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,20 +21,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DynamicColorBuilder(builder: (lightColorScheme, darkColorScheme) {
-      return MaterialApp(
-        routes: {
-          '/MatesPhotoDownloads': (context) => MatesPhotoDownload()
-        },
+      return MaterialApp.router(
         title: 'Lyu Home',
         theme: ThemeData(
-          colorScheme: lightColorScheme ?? ColorScheme.fromSeed(seedColor: Colors.blue),
+          colorScheme: lightColorScheme ?? ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
        ),
         darkTheme: ThemeData(
-          colorScheme: darkColorScheme ?? ColorScheme.fromSeed(seedColor: Colors.blue, brightness: Brightness.dark),
+          colorScheme: darkColorScheme ?? ColorScheme.fromSeed(seedColor: Colors.deepPurple, brightness: Brightness.dark),
           useMaterial3: true,
         ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        routeInformationParser: AppRoutes.router.routeInformationParser,
+        routerDelegate: AppRoutes.router.routerDelegate,
       );
     });
   }
@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
               const SizedBox(height: 5,),
               FilledButton.tonalIcon(onPressed: () {launchUrlString('https://space.bilibili.com/2059291308');}, icon: const Icon(Icons.live_tv, size: 15,), label: const Text('B站主页')),
               const SizedBox(height: 5,),
-              FilledButton.tonalIcon(onPressed: () async {await MailDialog();}, icon: const Icon(Icons.mail, size: 15,), label: const Text('邮箱')),
+              FilledButton.tonalIcon(onPressed: () async {await MailDialog();}, icon: const Icon(Icons.mail, size: 15,), label: const Text('   邮箱   ')),
             ]
           ),
           actions: <Widget>[
@@ -226,11 +226,11 @@ class _MyHomePageState extends State<MyHomePage> {
         slivers: <Widget>[
           SliverAppBar(
             pinned: true,
-            expandedHeight: 300.0,
+            expandedHeight: 400.0,
             actions: const <Widget> [ClipOval(child: Image(image: AssetImage('head.jpeg'), height: 40,))],
             flexibleSpace: FlexibleSpaceBar(
-              title: const Text('Lyu Web Home'),
-              background: Image.asset("bg.png", fit: BoxFit.cover,),
+              title: Text('Lyu Web Home', style: TextStyle(color:Colors.white)),
+              background: Image.asset("TopImg.png", fit: BoxFit.cover,),
             ),
           ),
           const SliverPadding(
@@ -309,9 +309,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: ElevatedButton(
                       onPressed: () {
                         if(fileWillBeLoadName == 'files.json'){
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => ReadArtPage(filename: link, filetitle: title,),
-                          ));
+                          GoRouter.of(context).pushNamed(
+                            "ReadArtPage",
+                            params: {'name': '$link'},
+                          );
                         }
                       },
                       style: ElevatedButton.styleFrom(

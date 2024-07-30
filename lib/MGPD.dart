@@ -35,16 +35,16 @@ class _MatesPhotoDownload extends State<MatesPhotoDownload> with SingleTickerPro
         slivers: <Widget>[
           SliverAppBar(
             pinned: true,
-            expandedHeight: 300.0,
+            expandedHeight: 400.0,
             flexibleSpace: FlexibleSpaceBar(
-              title: const Text('欢迎'),
-              background: Image.asset("bg.png",fit: BoxFit.cover,),
+              title: const Text('欢迎', style: TextStyle(color: Colors.white),),
+              background: Image.asset("TopImg.png",fit: BoxFit.cover,),
             ),
           ),
           const SliverPadding(
               padding: EdgeInsets.only(top: 10),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -55,13 +55,13 @@ class _MatesPhotoDownload extends State<MatesPhotoDownload> with SingleTickerPro
               ],
             )
           ),
-          SliverPadding(
+          const SliverPadding(
               padding: EdgeInsets.only(top: 10),
           ),
           SliverToBoxAdapter(
             child: TabBar(
               controller: _tabController,
-              tabs: [
+              tabs: const [
                 Tab(text: 'JPG'),
                 Tab(text: 'JPG & RAW',)
               ],
@@ -72,7 +72,7 @@ class _MatesPhotoDownload extends State<MatesPhotoDownload> with SingleTickerPro
               height: 400,
               child: TabBarView(
                 controller: _tabController,
-                children: [
+                children: const [
                   JPG_Page(),
                   JPG_RAW_Page()
               ],
@@ -94,28 +94,28 @@ class JPG_Page extends StatelessWidget{
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Icon(Icons.photo),
-        Text("从这下载的是JPG格式的照片压缩包"),
-        Text("这些照片拥有完整的内容，以及更高的压缩比"),
-        Text("这带来了更小的内存占用"),
-        Text("如果你只想浏览照片，建议下载这个文件"),
-        Text("\n访问密码:k2vl\n", style: TextStyle(fontSize: 10),),
+        const Icon(Icons.photo),
+        const Text("从这下载的是JPG格式的照片压缩包"),
+        const Text("这些照片拥有完整的内容，以及更高的压缩比"),
+        const Text("这带来了更小的内存占用"),
+        const Text("如果你只想浏览照片，建议下载这个文件"),
+        const Text("\n访问密码:k2vl\n", style: TextStyle(fontSize: 10),),
         Flex(
           direction: Axis.horizontal,
           children: <Widget>[
-            Spacer(flex: 22,),
-            Expanded(flex: 20, child: FilledButton(onPressed: (){launchUrlString('https://cloud.189.cn/web/share?code=aYjErqV3Uruu（访问码：k2vl）');} ,child: Text('前往下载'),)),//k2vl
-            Spacer(flex: 22,)
+            const Spacer(flex: 22,),
+            Expanded(flex: 20, child: FilledButton(onPressed: (){launchUrlString('https://cloud.189.cn/web/share?code=aYjErqV3Uruu（访问码：k2vl）');} ,child: const Text('前往下载'),)),//k2vl
+            const Spacer(flex: 22,)
           ],
         ),
-        Text("\n即将前往:天翼云盘",style: TextStyle(color: Colors.grey,fontSize: 10),),
-        Text("若无法打开，请点击下方按钮复制链接\n",style: TextStyle(color: Colors.grey,fontSize: 10),),
+        const Text("\n即将前往:天翼云盘",style: TextStyle(color: Colors.grey,fontSize: 10),),
+        const Text("若无法打开，请点击下方按钮复制链接\n",style: TextStyle(color: Colors.grey,fontSize: 10),),
         Flex(
           direction: Axis.horizontal,
           children: <Widget>[
-            Spacer(flex: 22,),
-            Expanded(flex: 20, child: ElevatedButton(onPressed: (){Clipboard.setData(ClipboardData(text: "https://cloud.189.cn/web/share?code=aYjErqV3Uruu（访问码：k2vl）"));} ,child: Text('复制'))),
-            Spacer(flex: 22,),
+            const Spacer(flex: 22,),
+            Expanded(flex: 20, child: ElevatedButton(onPressed: (){Clipboard.setData(const ClipboardData(text: "https://cloud.189.cn/web/share?code=aYjErqV3Uruu（访问码：k2vl）"));} ,child: const Text('复制'))),
+            const Spacer(flex: 22,),
           ]
         )
       ]
@@ -131,28 +131,28 @@ class JPG_RAW_Page extends StatelessWidget{
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Icon(Icons.photo_camera_back),
-        Text("从这下载的是JPG和RAW(CR3)格式的照片压缩包"),
-        Text("这些照片拥有完整的内容，以及更完整的数据"),
-        Text("这带来了更大的内存占用，同时有利于复杂照片编辑"),
-        Text("如果你想进行较专业的照片编辑，建议下载这个文件"),
-        Text("\n访问密码:ywk1\n", style: TextStyle(fontSize: 10),),
+        const Icon(Icons.photo_camera_back),
+        const Text("从这下载的是JPG和RAW(CR3)格式的照片压缩包"),
+        const Text("这些照片拥有完整的内容，以及更完整的数据"),
+        const Text("这带来了更大的内存占用，同时有利于复杂照片编辑"),
+        const Text("如果你想进行较专业的照片编辑，建议下载这个文件"),
+        const Text("\n访问密码:ywk1\n", style: TextStyle(fontSize: 10),),
         Flex(
           direction: Axis.horizontal,
           children: <Widget>[
-            Spacer(flex: 22,),
-            Expanded(flex: 20, child: FilledButton(onPressed: (){launchUrlString('https://cloud.189.cn/web/share?code=m2E3mireIf6v（访问码：ywk1）');} ,child: Text('前往下载'))),//ywk1
-            Spacer(flex: 22,),
+            const Spacer(flex: 22,),
+            Expanded(flex: 20, child: FilledButton(onPressed: (){launchUrlString('https://cloud.189.cn/web/share?code=m2E3mireIf6v（访问码：ywk1）');} ,child: const Text('前往下载'))),//ywk1
+            const Spacer(flex: 22,),
           ],
         ),
-        Text("\n即将前往:天翼云盘",style: TextStyle(color: Colors.grey,fontSize: 10),),
-        Text("若无法打开，请点击下方按钮复制链接\n",style: TextStyle(color: Colors.grey,fontSize: 10),),
+        const Text("\n即将前往:天翼云盘",style: TextStyle(color: Colors.grey,fontSize: 10),),
+        const Text("若无法打开，请点击下方按钮复制链接\n",style: TextStyle(color: Colors.grey,fontSize: 10),),
         Flex(
           direction: Axis.horizontal,
           children: <Widget>[
-            Spacer(flex: 22,),
-            Expanded(flex: 20, child: ElevatedButton(onPressed: (){Clipboard.setData(ClipboardData(text: "https://cloud.189.cn/web/share?code=m2E3mireIf6v（访问码：ywk1）"));} ,child: Text('复制'))),
-            Spacer(flex: 22,),
+            const Spacer(flex: 22,),
+            Expanded(flex: 20, child: ElevatedButton(onPressed: (){Clipboard.setData(const ClipboardData(text: "https://cloud.189.cn/web/share?code=m2E3mireIf6v（访问码：ywk1）"));} ,child: const Text('复制'))),
+            const Spacer(flex: 22,),
           ]
         )
       ],

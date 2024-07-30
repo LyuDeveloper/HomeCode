@@ -1,12 +1,17 @@
-2024/07/21-16:08:26.913 3758 Reusing MANIFEST C:\Users\95974\AppData\Local\Temp\flutter_tools.2b0671f5\flutter_tools_chrome_device.fef217a0\Default\Session Storage/MANIFEST-000001
-2024/07/21-16:08:26.922 3758 Recovering log #30
-2024/07/21-16:08:26.928 3758 Reusing old log C:\Users\95974\AppData\Local\Temp\flutter_tools.2b0671f5\flutter_tools_chrome_device.fef217a0\Default\Session Storage/000030.log 
-2024/07/21-16:08:26.933 3758 Delete type=2 #3
-2024/07/21-16:08:26.933 3758 Delete type=0 #3
-2024/07/21-16:08:26.933 3758 Delete type=0 #4
-2024/07/21-16:08:26.933 3758 Delete type=0 #6
-2024/07/21-16:08:26.933 3758 Delete type=2 #7
-2024/07/21-16:08:26.933 3758 Delete type=0 #20
-2024/07/21-16:08:26.933 3758 Delete type=0 #24
-2024/07/21-16:08:26.933 3758 Delete type=0 #28
-2024/07/21-16:08:26.933 3758 Delete type=2 #31
+2024/07/30-16:49:58.992 380c Reusing MANIFEST C:\Users\95974\AppData\Local\Temp\flutter_tools.2b68a994\flutter_tools_chrome_device.f08968a4\Default\Session Storage/MANIFEST-000001
+2024/07/30-16:49:58.995 380c Recovering log #33
+2024/07/30-16:49:59.003 380c Reusing old log C:\Users\95974\AppData\Local\Temp\flutter_tools.2b68a994\flutter_tools_chrome_device.f08968a4\Default\Session Storage/000033.log 
+2024/07/30-16:49:59.004 380c Delete type=2 #3
+2024/07/30-16:49:59.004 380c Delete type=0 #3
+2024/07/30-16:49:59.004 380c Delete type=0 #4
+2024/07/30-16:49:59.004 380c Delete type=0 #6
+2024/07/30-16:49:59.004 380c Delete type=2 #7
+2024/07/30-16:49:59.004 380c Delete type=0 #20
+2024/07/30-16:49:59.004 380c Delete type=2 #22
+2024/07/30-16:49:59.004 380c Delete type=0 #24
+2024/07/30-16:49:59.005 380c Delete type=2 #25
+2024/07/30-16:49:59.005 380c Delete type=2 #27
+2024/07/30-16:49:59.005 380c Delete type=0 #28
+2024/07/30-16:49:59.005 380c Delete type=2 #30
+2024/07/30-16:49:59.005 380c Delete type=0 #30
+2024/07/30-16:49:59.005 380c Delete type=2 #31

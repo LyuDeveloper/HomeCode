@@ -98,6 +98,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "go_router",
+      "rootUri": "file:///C:/Users/95974/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/go_router-5.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "leak_tracker",
       "rootUri": "file:///C:/Users/95974/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/leak_tracker-10.0.4",
       "packageUri": "lib/",
@@ -120,6 +126,12 @@
       "rootUri": "file:///C:/Users/95974/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/lints-3.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "logging",
+      "rootUri": "file:///C:/Users/95974/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/logging-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "markdown",
@@ -326,7 +338,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-07-02T04:51:43.327496Z",
+  "generated": "2024-07-30T08:49:40.606157Z",
   "generator": "pub",
   "generatorVersion": "3.4.3",
   "flutterRoot": "file:///D:/FlutterSDK/flutter",

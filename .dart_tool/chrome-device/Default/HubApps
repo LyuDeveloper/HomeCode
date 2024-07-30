@@ -831,10 +831,6 @@
          "enabled": true,
          "enabled|flight:msEdgeHubAppOutlookAutoOpenOff": false,
          "enabled|flight:msEdgeHubAppsAutoOpenOutlookV2": false,
-         "fallback_notification": {
-            "show_count": 5,
-            "text": "查看源电子邮件"
-         },
          "fre_notification": {
             "enabled": true,
             "header": "我们打开 Outlook 以并行显示你打开的链接的电子邮件",
@@ -894,9 +890,9 @@
       "description": "在流中停留时检查电子邮件",
       "icon": {
          "raster_icon": {
-            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_outlook_dark.png/1.12.12/asset",
-            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_outlook_hc.png/1.12.12/asset",
-            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_outlook_light.png/1.12.12/asset"
+            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_outlook_dark.png/1.12.13/asset",
+            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_outlook_hc.png/1.12.13/asset",
+            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_outlook_light.png/1.12.13/asset"
          }
       },
       "id": "8682d0fa-50b3-4ece-aa5b-e0b33f9919e2",
@@ -922,7 +918,7 @@
       },
       "trusted_domains": [ "live.com", "office.com", "microsoftonline.com", "microsoft.com", "office365.com" ],
       "trusted_types": [ "default", "dompurify" ],
-      "version": "1.12.12"
+      "version": "1.12.13"
    }, {
       "capabilities|flight:msDesignerSinglePrompt": {
          "enable_force_dark_mode": true
@@ -1614,10 +1610,6 @@
          "enabled": true,
          "enabled|flight:msEdgeAutoOpenTeamsHubAppV2": false,
          "enabled|flight:msEdgeHubAppTeamsAutoOpenOff": false,
-         "fallback_notification": {
-            "show_count": 5,
-            "text": "查看 Teams 聊天"
-         },
          "fre_notification": {
             "enabled": true,
             "header": "我们已打开 Teams 以并排显示聊天以及你已打开的链接",
@@ -1650,9 +1642,9 @@
       },
       "icon": {
          "raster_icon": {
-            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_teams_dark.png/1.5.10/asset",
-            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_teams_hc.png/1.5.10/asset",
-            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_teams_light.png/1.5.10/asset"
+            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_teams_dark.png/1.5.11/asset",
+            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_teams_hc.png/1.5.11/asset",
+            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_teams_light.png/1.5.11/asset"
          }
       },
       "id": "bc25fcef-8964-4e72-8287-23e2b496c128",
@@ -1672,7 +1664,7 @@
       "target": {
          "url": "https://teams.microsoft.com/embed-client/chats/list?layout=singlePane&hostCtx=edge"
       },
-      "version": "1.5.10"
+      "version": "1.5.11"
    }, {
       "capabilities": {
          "show_domain_in_header": true
