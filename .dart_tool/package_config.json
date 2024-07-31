@@ -99,9 +99,9 @@
     },
     {
       "name": "go_router",
-      "rootUri": "file:///C:/Users/95974/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/go_router-5.2.4",
+      "rootUri": "file:///C:/Users/95974/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/go_router-6.5.9",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.18"
     },
     {
       "name": "leak_tracker",
@@ -302,6 +302,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "url_strategy",
+      "rootUri": "file:///C:/Users/95974/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/url_strategy-0.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///C:/Users/95974/AppData/Local/Pub/Cache/hosted/pub.flutter-io.cn/vector_math-2.1.4",
       "packageUri": "lib/",
@@ -338,7 +344,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-07-30T08:49:40.606157Z",
+  "generated": "2024-07-31T08:23:17.270136Z",
   "generator": "pub",
   "generatorVersion": "3.4.3",
   "flutterRoot": "file:///D:/FlutterSDK/flutter",

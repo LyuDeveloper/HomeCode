@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ReadArtPage extends StatefulWidget{
@@ -28,11 +26,11 @@ class TitleTextWidget extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return CircularProgressIndicator();
         } else if (snapshot.hasError) {
-          return const Row(children: [Icon(Icons.error,size: 30,),SizedBox(width: 10,),Text('加载出错',style: TextStyle(fontSize: 18))]);
+          return const Row(children: [Icon(Icons.no_sim),SizedBox(width: 10,),Text('加载出错',style: TextStyle(fontSize: 18))]);
         } else if (snapshot.hasData) {
-          return Row(children: [const Icon(Icons.article,size: 30,),const SizedBox(width: 10,),Text(snapshot.data!,style: const TextStyle(fontSize: 18))]);
+          return Row(children: [const Icon(Icons.article),const SizedBox(width: 10,),Text(snapshot.data!,style: TextStyle(fontSize: 18))]);
         } else {
-          return const Row(children: [Icon(Icons.error,size: 30,),SizedBox(width: 10,),Text('加载出错',style: TextStyle(fontSize: 18))]);
+          return const Row(children: [Icon(Icons.no_sim),SizedBox(width: 10,),Text('加载出错',style: TextStyle(fontSize: 18))]);
         }
       },
     );
@@ -56,12 +54,13 @@ class TitleTextWidget extends StatelessWidget {
 }
 
 class _ReadArtPage extends State<ReadArtPage>{
-  String filename = 'a';
+  String filename;
   _ReadArtPage({required this.filename});
 
-  var url = Uri.base.toString();
-
   Future<bool?> ShareDialog() {
+
+    final String currentUrl = Uri.base.toString();
+    final String url = Uri.parse(currentUrl).toString();
     
     const copyBar = SnackBar(
       content: Text('已复制到剪切板'),
@@ -104,7 +103,7 @@ class _ReadArtPage extends State<ReadArtPage>{
                 children: [
                   const Text(': - (',style: TextStyle(fontSize: 80)),
                   const Text("哦呦, 出错了",style: TextStyle(fontSize: 30),),
-                  const Text('此内容无法被访问\n'),
+                  const Text('你所访问的文章无法加载\n'),
                   Text('${snapshot.error}',style: const TextStyle(color: Colors.blueGrey),textAlign: TextAlign.center,)
                 ],
               ),

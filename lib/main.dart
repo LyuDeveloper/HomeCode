@@ -6,12 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'MGPD.dart';
 import 'route.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
 

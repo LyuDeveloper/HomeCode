@@ -2,11 +2,13 @@ import 'package:go_router/go_router.dart';
 
 import 'main.dart';
 import 'article_read.dart';
+import 'error_buider.dart';
 
 class AppRoutes {
   
   static GoRouter router = GoRouter(
     initialLocation: '/',
+    errorBuilder: (context, state) => ErrorPage(),
     routes: [
       GoRoute(
         name: 'HomePage',
