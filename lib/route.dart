@@ -22,6 +22,11 @@ class AppRoutes {
           final name = state.params['name']!;
           return ReadArtPage(filename: name);
         }
+      ),
+      GoRoute(
+        name: "404Page",
+        path: '/404', 
+        builder: (context, state) => ErrorPage(),
       )
     ]
   );
