@@ -8,7 +8,6 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_strategy/url_strategy.dart';
 
-import 'MGPD.dart';
 import 'route.dart';
 
 void main() {
@@ -128,25 +127,25 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Future<bool?> PrivateDialog() {
+  Future<bool?> SearchDialog() {
     String result = '';
     String see = '';
     return showDialog(
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, dialogState) => AlertDialog(
-          title: const Icon(Icons.lock_person),
+          title: const Icon(Icons.search),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Text("输入Private Key以查看私有内容"),
+              const Text("输入关键词以搜索"),
               TextField(
                 onChanged: (a) {
                   result = a;
                 },
                 autofocus: true,
                 decoration: const InputDecoration(
-                  labelText: "Private Key",
+                  labelText: "搜索...",
                   hintText: "在此输入",
                   prefixIcon: Icon(Icons.key)
                 ),
@@ -161,17 +160,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 print(result);
               }
               if (result != '') {
-                if (result == '2021mates') {
-                  dialogState(() => result);
-                  see = '';
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => MatesPhotoDownload()));
-                } else {
-                  dialogState(() => result);
-                  see = '无 $result 的内容';
-                  if (see.length >= 29) {
-                    see = '无结果';
-                  }
-                }
+                dialogState(() => result);
+                see = '搜索功能敬请期待';
               } else {
                 result = '';
                 dialogState(() => result);
@@ -218,10 +208,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    const waitExpect = SnackBar(
-      content: Text('搜索功能敬请期待~'),
-      duration: Duration(milliseconds: 1500),
-    );
 
     return Scaffold(
       body: CustomScrollView(
@@ -275,17 +261,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                 ),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Text(searchlabel, style: const TextStyle(fontSize: 15),),
-                      const SizedBox(width: 5,),
-                      IconButton(onPressed: () {ScaffoldMessenger.of(context).showSnackBar(waitExpect);}, icon: const Icon(Icons.search)),
-                      const SizedBox(width: 10,)
-                    ],
-                  ),
-                ),
+                
               ],
             )
           ),
@@ -307,7 +283,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   final introduction = object['intro'];
                   final photo = object['photo'];
                   return SizedBox(
-                    width: 300,
+                    width: 400,
                     height: 150,
                     child: ElevatedButton(
                       onPressed: () {
@@ -333,7 +309,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 title,
                                 style: const TextStyle(fontSize: 18),
                               ),
-                              const SizedBox(height: 10),
+                              const SizedBox(height: 15),
                               Text(
                                 info,
                                 style: const TextStyle(fontSize: 14),
@@ -350,7 +326,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           const SizedBox(
                             height: 140,
-                            width: 15,
+                            width: 50,
                           ),
                           SizedBox(
                             height: 120,
@@ -393,9 +369,9 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Align(
               alignment: Alignment.bottomRight,
               child: FloatingActionButton(
-                heroTag: "私有",
-                onPressed: () async {await PrivateDialog();},
-                child: const Icon(Icons.lock_person),
+                heroTag: "搜索",
+                onPressed: () async {await SearchDialog();},
+                child: const Icon(Icons.search),
               ),
             ),
           ),
